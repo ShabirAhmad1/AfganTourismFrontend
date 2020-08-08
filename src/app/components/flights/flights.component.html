@@ -1,0 +1,112 @@
+<div class="container mt-3">
+  <div class="row shadow p-4 m-1">
+    <div class="col-12">
+      <h2 class="mb-3">
+        Search Flights to Afghanistan
+      </h2>
+    </div>
+    <div class="col-12">
+      <form>
+        <div class="form-row">
+          <div class="col">
+            <label>Where from?</label>
+            <div class="input-group mb-1">
+
+              <input type="text" class="form-control" placeholder="Origin Country" [formControl]="origin" required>
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa  fa-search" style="cursor: pointer;" (click)="fetchAirports(origin.value)"></i>
+                </span>
+              </div>
+            </div>
+            <ng-container *ngIf="originSearch">
+              <select class="custom-select" [formControl]="originSelected">
+                <option value="" disabled selected>Select your option</option>
+                <ng-container *ngFor='let item of originSearch'>
+                  <option value={{item.PlaceId}}>{{item.PlaceName}}-{{item.CountryName}} </option>
+                </ng-container>
+
+              </select>
+            </ng-container>
+            <ng-container *ngIf="originErr">
+              <p class="mb-0 text-danger">
+                * Please select an origin country
+              </p>
+            </ng-container>
+            <ng-container *ngIf="originNotfoundErr">
+              <p class="mb-0 text-danger">
+                * No origin found
+              </p>
+            </ng-container>
+          </div>
+          <div class="col">
+            <label>Where to?</label>
+            <select class="custom-select mb-1" [formControl]='destinationSelected'>
+              <option value="" disabled selected>Select destination</option>
+              <option value="KBL-sky">Hamid Karzai International Airport-Kabul</option>
+              <option value="HEA-sky">Herat International Airport-Herat</option>
+              <option value="KDH-sky">Kandahar International Airport-Kandahar</option>
+            </select>
+            <ng-container *ngIf="destinationErr">
+              <p class="mb-0 text-danger">
+                * Please select destination airport
+              </p>
+            </ng-container>
+          </div>
+          <div class="col">
+            <label>When?</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" ngbDatepicker #d="ngbDatepicker" placeholder="Anytime"
+                [formControl]='time' />
+              <div class="input-group-append">
+                <span class="input-group-text">
+                  <i class="fa  fa-calendar" style="cursor: pointer;" (click)="d.toggle()"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <ng-container *ngIf='noflightfound'>
+              <p class="mb-0 text-danger">
+                No flights found
+              </p>
+            </ng-container>
+          </div>
+          <div class="col-12 text-right">
+            <button class="btn btn-primary" (click)='submit()'>Search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <ng-container *ngIf='flightsData.length > 0'>
+      <ng-container *ngFor='let item of flightsData'>
+        <div class="row w-100 shadow p-3 m-1">
+          <div class="col-6">
+            <h5 class="font-weight-light">
+              {{item.origin}} to {{item.destination}}
+            </h5>
+            <h6 class="font-weight-light text-secondary">
+              {{item.originC}} - {{item.destinationC}}
+            </h6>
+            <h6 class="font-weight-light text-primary">
+              <span class="text-secondary">Airline :</span> {{item.service}}
+            </h6>
+            <h6>
+              Departure: {{item.departureTime}}
+            </h6>
+          </div>
+          <div class="col-6 text-right">
+            <h5 class="font-weight-light text-success">
+              <span class="text-secondary">
+                Starting from
+              </span> ${{item.price}}
+            </h5>
+            <button class="btn btn-primary" routerLink='/book'>
+              Book Now!
+            </button>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<h4 class="display-4 text-center mt-4">Top Cuisines of Afghanistan</h4>
+<hr class="new1">
+<div class="container">
+  <div class="row">
+    <div *ngFor="let item of createRange();" class="col-sm-4">
+      <div class="p-2 my-1 shadow-sm cursor-pointer" routerLink='/cuisines/{{item.id}}'>
+        <div class="row">
+          <div class="col-4 pr-0">
+            <img src={{item.headerImage}} width="100%" class="imageThumb" />
+          </div>
+          <div class="col-8">
+            <h5 class="title-limit-2 text-capitalize">
+              {{item.title}}
+            </h5>
+            <p class="title-limit-3 mb-0 text-capitalize">
+              {{item.description}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

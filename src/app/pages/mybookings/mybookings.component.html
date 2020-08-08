@@ -1,0 +1,42 @@
+<h1 class="font-weight-light text-center">
+  Your Hotel Bookings
+</h1>
+
+<ng-container *ngFor="let item of data;">
+  <div class="px-5 pt-5">
+    <div class="shadow p-3">
+      <div class="row">
+        <div class="col-3">
+          <img src={{item.hotelId.images[0].link}} *ngIf="item.hotelId.images[0]" width="100%"/>
+        </div>
+        <div class="col-6">
+          <h1 class="font-weight-light">
+            {{item.hotelId.title}}
+          </h1>
+          <strong>
+            Details
+          </strong>
+          <p class="mb-0">
+            Adults : {{item.Adults}}
+          </p>
+          <p class="mb-0">
+            Children : {{item.Children}}
+          </p>
+          <p class="mb-0">
+            Booking from : {{item.bookingDate.from.day}}-{{item.bookingDate.from.month}}-{{item.bookingDate.from.year}}
+            until : {{item.bookingDate.until.day}}-{{item.bookingDate.until.month}}-{{item.bookingDate.until.year}}
+          </p>
+        </div>
+        <div class="col-3">
+          <div class="shadow-sm p-2 mr-2 bg-primary text-white text-center" [ngClass]="{
+            'bg-primary' : item.Status == 'Pending',
+            'bg-success' : item.Status == 'Approved',
+            'bg-danger' : item.Status == 'Denied'
+          }">
+            Status : {{item.Status}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

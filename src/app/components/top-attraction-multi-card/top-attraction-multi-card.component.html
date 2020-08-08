@@ -1,0 +1,16 @@
+<h4 class="display-4 text-center mt-4">Top Attractions of Afghanistan</h4>
+<hr class="new1">
+<div class="container">
+  <div class="row">
+    <div *ngFor="let item of createRange();" class="col-sm-3">
+      <div class="shadow-sm p-2 my-1 cursor-pointer" routerLink='/attractions/{{item.id}}'>
+        <div class="text-center">
+          <img src={{item.headerImage}} width="100%" class="mb-2 imageThumb" />
+          <h5 class="title-limit-2 font-weight-normal text-capitalize">
+            {{item.title}}
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

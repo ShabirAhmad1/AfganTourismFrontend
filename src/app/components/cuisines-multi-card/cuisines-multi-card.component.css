@@ -1,0 +1,22 @@
+hr.new1 {  border-top: 2px solid red; width:30px}
+
+.title-limit-3{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  .title-limit-2{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .imageThumb{
+    height: 100px;
+    object-fit: cover;
+  }
+  .cursor-pointer:hover{
+    cursor: pointer;
+    background-color: #eeededa9;
+  }

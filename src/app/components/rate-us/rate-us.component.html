@@ -1,0 +1,94 @@
+<h4 class="display-4 text-center mt-4">Rate Us</h4>
+<hr class="new1">
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="shadow p-4 m-1">
+        <div class="row">
+          <div class="col-sm-7">
+            <h5 class="font-weight-normal">
+              Show your support by rating us!
+            </h5>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce laoreet mi id condimentum commodo.
+              Pellentesque imperdiet tristique libero, id tristique nunc malesuada ac. In dictum commodo suscipit.
+            </p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              Rate Us
+            </button>
+          </div>
+          <div class="col-sm-5 text-center">
+            <ng-container *ngIf='actualRate'>
+              <ngb-rating [(rate)]="actualRate" [readonly]="true" max="5">
+                <ng-template let-fill="fill" let-index="index">
+                  <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                </ng-template>
+              </ngb-rating>
+            </ng-container>
+            <h4 class="font-weight-normal">
+              {{this.convertedRate()}}/5
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal for rate us -->
+<ng-container>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Rate us</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #rateusForm="ngForm" (ngSubmit)="submit(rateusForm.form);">
+            <label>
+              Name:
+            </label>
+            <input type="text" class="form-control" name="name" ngModel #nameField="ngModel" required minlength="3">
+            <div class="alert alert-danger my-1" *ngIf="nameField.touched && nameField.errors">
+              Invalid Input.
+            </div>
+            <br />
+            <label>
+              Email:
+            </label>
+            <input type="email" class="form-control" email name="email" ngModel #emailField="ngModel" required
+              minlength="3">
+            <div class="alert alert-danger my-1" *ngIf="emailField.touched && emailField.errors">
+              Invalid Input.
+            </div>
+            <br />
+            <!-- <star-rating value="5" totalstars="5" checkedcolor="yellow" uncheckedcolor="grey" size="36px"
+              readonly="false" (rate)="onRate($event)">
+            </star-rating> -->
+            <ngb-rating [(rate)]="userRating" [readonly]="false" max="5">
+              <ng-template let-fill="fill" let-index="index">
+                <span class="star" [class.filled]="fill === 100">&#9733;</span>
+              </ng-template>
+            </ngb-rating>
+
+            
+            <br />
+            <div class="alert alert-success my-1" *ngIf="hidden">
+              Thanks for rating us.
+            </div>
+            <div class="alert alert-danger my-1" *ngIf="errMessage">
+              You have already rated.
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary" [disabled]="!rateusForm.valid || hidden">Rate Us</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,8 @@
+.hotelImage{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+
+}
+
+hr.new1 {  border-top: 2px solid red; width:30px}

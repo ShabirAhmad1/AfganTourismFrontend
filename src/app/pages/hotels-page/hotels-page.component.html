@@ -1,0 +1,85 @@
+<!-- <h4 class="display-4 text-center mt-4 text-capitalize">Hotels in Kabul</h4>
+<hr class="new1">
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12 shadow-sm p-4 m-1" *ngFor='let item of data'>
+      <div class="row">
+        <div class="col-md-3 text-center">
+          <img src={{item.photo.images.small.url}} class="hotelImage" *ngIf='item.photo' />
+          <p *ngIf='item.photo' >
+            {{item.photo.caption}}
+          </p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="font-weight-light">
+            {{item.name}}
+          </h3>
+          <h4 class="font-weight-light">
+            {{item.ranking}}
+          </h4>
+          <br>
+          <h5 class="font-weight-light">
+            Ranking Postion : {{item.ranking_position}}/{{item.ranking_denominator}}
+          </h5>
+          <div *ngFor='let image of item.awards'>
+            <img src={{image.small}} />
+          </div>
+        </div>
+        <div class="col-md-3 text-center">
+          <h5 class="font-weight-light text-secondary">
+            {{item.price_level}}
+          </h5>
+          <h5 class="font-weight-light text-success">
+            {{item.price}}
+          </h5>
+          <br>
+          <h6 class="font-weight-light">
+            Rating: {{item.rating ? item.rating : 4 }}/5
+          </h6>
+          <button class="btn btn-primary" routerLink='/book'>
+            Book now!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<h4 class="display-4 text-center mt-4 text-capitalize">Best hotels in Afghanistan</h4>
+<hr class="new1">
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12 shadow-sm p-4 m-1" *ngFor='let item of data'>
+      <div class="row">
+        <div class="col-md-3 text-center">
+          <img src={{item.images[0].link}} class="hotelImage" *ngIf='item.images[0]' />
+        </div>
+        <div class="col-md-6">
+          <h3 class="font-weight-light">
+            {{item.title}}
+          </h3>
+          <p class="font-weight-light">
+            {{item.description}}
+          </p>
+          <br>
+          <h6 class="font-weight-light">
+            Ranking Postion : {{item.rank}}/{{maxRank}}
+          </h6>
+        </div>
+        <div class="col-md-3 text-center">
+          <p class="text-secondary">
+            Price Range
+          </p>
+          <h5 class="font-weight-light text-secondary">
+            ${{item.price.min}} - ${{item.price.max}}
+          </h5>
+          <br>
+          <button class="btn btn-primary" routerLink='/book/{{item._id}}'>
+            Book now!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

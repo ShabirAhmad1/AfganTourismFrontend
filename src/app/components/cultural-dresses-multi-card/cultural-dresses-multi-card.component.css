@@ -1,0 +1,12 @@
+hr.new1 {  border-top: 2px solid red; width:30px}
+.slick-prev:before{
+    color: black !important;
+}
+.imageThumb{
+    height: 180px;
+    object-fit: cover;
+  }
+  .cursor-pointer:hover{
+    cursor: pointer;
+    background-color: #eeededa9;
+  }

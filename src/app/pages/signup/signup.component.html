@@ -1,0 +1,63 @@
+<h4 class="display-4 text-center mt-4">Sign Up</h4>
+<hr class="new1">
+<div class="container">
+  <div class="row">
+    <div  class="col-md-3">
+
+    </div>
+    <div class="col-md-6 card shadow-sm p-3 m-1">
+      <form #signupForm="ngForm" (ngSubmit)="submit(signupForm.form);">
+        <label>
+          Name:
+        </label>
+        <input type="text" class="form-control" name="name" ngModel #nameField="ngModel" required minlength="3">
+        <div class="alert alert-danger my-1" *ngIf="nameField.touched && nameField.errors">
+          Invalid Name.
+        </div>
+        <br />
+        <label>
+          Email:
+        </label>
+        <input type="email" class="form-control" email name="email" ngModel #emailField="ngModel" required
+          minlength="3">
+        <div class="alert alert-danger my-1" *ngIf="emailField.touched && emailField.errors">
+          Invalid Email.
+        </div>
+        <br />
+        <div class="form-group ">
+          <label>Password:</label>
+          <input required minlength="6" maxlength="30" ngModel name="Password" type="password" class="form-control"
+            #Password='ngModel'>
+          <div class="alert alert-danger" *ngIf="Password.touched && !Password.valid">
+            <div *ngIf="Password.errors.required">Password is required.</div>
+            <div *ngIf="Password.errors.minlength">Minimum length is '8' characters</div>
+            <div *ngIf="Password.errors.maxlength">Maximun length is '30' characters</div>
+          </div>
+        </div>
+        <div class="form-group ">
+          <label>Confirm Password:</label>
+          <input required minlength="6" maxlength="30" ngModel name="confirmPassword" type="password"
+            class="form-control" #confirmPassword='ngModel'>
+          <div class="alert alert-danger" *ngIf="Password.touched && !Password.valid">
+            <div *ngIf="confirmPassword.errors.required">Password is required.</div>
+            <div *ngIf="confirmPassword.errors.minlength">Minimum length is '8' characters</div>
+            <div *ngIf="confirmPassword.errors.maxlength">Maximun length is '30' characters</div>
+          </div>
+          <div class="alert alert-danger" *ngIf="confirmPassword.value !== Password.value && confirmPassword.touched">
+            Passwords do not match. 
+          </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="error">
+          {{error}}
+        </div>
+        <br />
+        
+        <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid || hidden">Sign up</button>
+      </form>
+      <p>
+        <br>
+        Already have an account? Please <a routerLink='/log-in'>Log in</a>
+      </p>
+    </div>
+  </div>
+</div>

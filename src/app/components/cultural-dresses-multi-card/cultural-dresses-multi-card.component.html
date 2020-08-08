@@ -1,0 +1,33 @@
+<h4 class="display-4 text-center mt-4">Cultural Dresses of Afghanistan</h4>
+<hr class="new1">
+<div class="container">
+  <ng-container *ngIf="showAll">
+    <div class="row">
+      <div *ngFor="let item of data;" class="col-sm-3">
+        <div class="card shadow-sm cursor-pointer" routerLink='/cultural-dresses/{{item.id}}'>
+          <div class="text-center">
+            <img src={{item.headerImage}} width="100%" class="mb-2 imageThumb" />
+            <h5 class="title-limit-2 font-weight-normal text-capitalize">
+              {{item.title}}
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <p>
+    {{this.showall}}
+  </p>
+  <ng-container *ngIf="!showAll">
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+      <div ngxSlickItem *ngFor="let item of data" class="slide">
+        <div class="shadow-sm p-2 m-2 cursor-pointer" routerLink='/cultural-dresses/{{item.id}}'>
+          <img src="{{item.headerImage}}" alt="" width="100%">
+          <h5 class="font-weight-normal mt-3 text-center text-capitalize">
+            {{item.title}}
+          </h5>
+        </div>
+      </div>
+    </ngx-slick-carousel>
+  </ng-container>
+</div>

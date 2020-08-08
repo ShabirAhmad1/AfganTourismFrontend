@@ -1,0 +1,12 @@
+.headerImageCss{
+    max-height: 300px;
+    object-fit: cover;
+    object-position: center;
+}
+hr.new1 {  border-top: 2px solid red; width:30px}
+hr.simple {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+  }
